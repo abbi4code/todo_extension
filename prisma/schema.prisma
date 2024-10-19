@@ -15,11 +15,11 @@ datasource db {
 
 model User{
   id String @id @default(uuid())
-  firstName String
+  firstName String 
   lastName String
   email String @unique
   password String 
-  imageUrl String 
-  authProviderId String
+  imageUrl String? 
+  authProviderId String?
   createdAt DateTime @default(now())
 }
