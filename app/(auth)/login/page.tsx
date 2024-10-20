@@ -3,11 +3,18 @@ import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { signIn } from "@/utils/auth";
+import { getSession } from "@/utils/getSession";
 import { IconBrandGithub, IconBrandGoogle } from "@tabler/icons-react";
+import { redirect } from "next/navigation";
 import Link from "next/link";
 import React from "react";
 
-export default function page() {
+export default async function page() {
+
+  const session = await getSession();
+  console.log("session", session)
+  const user = session?.user
+  if(user) redirect('/')
   return (
     <div className="max-w-md w-full mt-10 rounded-none md:rounded-2xl mx-auto border border-[#121212] px-4 py-4">
       <form action={login}>
